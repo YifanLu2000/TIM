@@ -1,0 +1,13 @@
+% clc,clear all;
+close all;
+% mex myGraphCut.cpp;
+A = rand(5,5);
+A = (A + A')/2;
+AC = triu(A,1);
+[GraphNodeX,GraphNodeY] = find(AC > 0.5);
+GraphNode = [GraphNodeX,GraphNodeY];
+GraphWeight = AC(find(AC > 0.5));
+nodeCost = rand(5,2);
+nodeNum = 5;
+labelNum = 2;
+myGraphCut(GraphNode,GraphWeight,nodeCost,nodeNum,labelNum);

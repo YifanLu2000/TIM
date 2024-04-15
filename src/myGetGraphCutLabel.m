@@ -1,0 +1,11 @@
+function label = myGetGraphCutLabel(A, datacost, lambda)
+AC = triu(A,1);
+[GraphNodeX,GraphNodeY] = find(AC > 0);
+GraphNode = [GraphNodeX,GraphNodeY];
+GraphWeight = AC(find(AC > 0));
+CorrectNum = length(GraphWeight);
+nodeCost = datacost;
+nodeNum = size(datacost,1);
+GraphWeight = GraphWeight.*nodeNum/length(GraphWeight);
+labelNum = 2;
+label = myGraphCut(GraphNode,GraphWeight,nodeCost,nodeNum,labelNum,lambda);
